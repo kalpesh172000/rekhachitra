@@ -13,12 +13,12 @@
         android:text="To"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/editTextText2"
-        tools:layout_editor_absoluteX="17dp" />
+        app:layout_constraintStart_toStartOf="@+id/editTextText2" />
 
     <EditText
         android:id="@+id/editTextText2"
         android:layout_width="378dp"
-        android:layout_height="41dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="476dp"
         android:ems="10"
         android:hint="Your Destination"
@@ -58,7 +58,7 @@
     <EditText
         android:id="@+id/editTextText"
         android:layout_width="378dp"
-        android:layout_height="41dp"
+        android:layout_height="48dp"
         android:ems="10"
         android:hint="Your loacation"
         android:inputType="text"
@@ -76,7 +76,7 @@
         android:text="From"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/editTextText"
-        tools:layout_editor_absoluteX="17dp" />
+        app:layout_constraintStart_toStartOf="@+id/editTextText" />
 
     <Button
         android:id="@+id/button"
