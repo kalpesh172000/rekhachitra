@@ -99,7 +99,7 @@ public class SearchRoute extends AppCompatActivity {
                 dialog.setContentView(R.layout.searchable_location_spinner);
 
                 // set custom height and width
-                dialog.getWindow().setLayout(650,800);
+                dialog.getWindow().setLayout(690,900);
 
                 // set transparent background
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -158,7 +158,7 @@ public class SearchRoute extends AppCompatActivity {
                 dialog.setContentView(R.layout.searchable_location_spinner);
 
                 // set custom height and width
-                dialog.getWindow().setLayout(650,800);
+                dialog.getWindow().setLayout(690,900);
 
                 // set transparent background
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
