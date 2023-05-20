@@ -87,6 +87,8 @@ public class SearchRoute extends AppCompatActivity {
             }
         }
 
+
+        //open a searchable spinner dialog
         editTextSource.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -144,6 +146,7 @@ public class SearchRoute extends AppCompatActivity {
                 });
             }
         });
+
 
         editTextDestination.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -248,6 +251,7 @@ public class SearchRoute extends AppCompatActivity {
                     true);
                     timePickerDialog.show();
                 }
+                editTextTime.clearFocus();
 
             }
         });
@@ -270,6 +274,7 @@ public class SearchRoute extends AppCompatActivity {
                         minute,
                         true);
                 timePickerDialog.show();
+                editTextTime.clearFocus();
             }
         });
 

@@ -18,34 +18,37 @@
 
     <EditText
         android:id="@+id/editTextSource"
-        android:layout_width="378dp"
+        android:layout_width="0dp"
         android:layout_height="48dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="100dp"
+        android:layout_marginEnd="15dp"
+        android:background="@android:drawable/editbox_background"
+        android:drawableEnd="@drawable/baseline_keyboard_arrow_down_24"
         android:ems="10"
+        android:focusable="false"
         android:hint="Your loacation"
         android:inputType="textNoSuggestions"
-        android:focusable="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarSearchRoute"
-        android:drawableEnd="@drawable/baseline_keyboard_arrow_down_24"
-        android:background="@android:drawable/editbox_background"/>
+        app:layout_constraintTop_toBottomOf="@+id/toolbarSearchRoute" />
 
     <EditText
         android:id="@+id/editTextDestination"
-        android:layout_width="378dp"
+        android:layout_width="0dp"
         android:layout_height="48dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="52dp"
+        android:layout_marginEnd="15dp"
+        android:background="@android:drawable/editbox_background"
+        android:drawableEnd="@drawable/baseline_keyboard_arrow_down_24"
+        android:focusable="false"
         android:hint="Your Destination"
         android:inputType="textNoSuggestions"
-        android:focusable="false"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextSource"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSource"
-        android:drawableEnd="@drawable/baseline_keyboard_arrow_down_24"
-        android:background="@android:drawable/editbox_background"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSource" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarSearchRoute"
@@ -98,10 +101,12 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="378dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:gravity="left"
         android:orientation="horizontal"
+        android:paddingStart="0dp"
+        android:paddingLeft="0dp"
         app:layout_constraintBottom_toTopOf="@+id/editTextTime"
         app:layout_constraintEnd_toEndOf="@+id/editTextDestination"
         app:layout_constraintStart_toStartOf="@+id/editTextDestination"
@@ -110,6 +115,8 @@
         <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="15dp"
             android:buttonTint="#2196F3"
             android:orientation="horizontal">
 
@@ -120,13 +127,14 @@
                 android:layout_marginEnd="20dp"
                 android:layout_weight="0"
                 android:checked="true"
+                android:gravity="left|center_vertical"
                 android:text="Already at bus stop" />
 
             <RadioButton
                 android:id="@+id/radioButtonCustom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="0"
                 android:buttonTint="#2196F3"
                 android:text="Custom Time" />
         </RadioGroup>
@@ -134,19 +142,20 @@
 
     <EditText
         android:id="@+id/editTextTime"
-        android:layout_width="378dp"
+        android:layout_width="0dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="76dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="44dp"
+        android:background="@android:drawable/editbox_background"
+        android:drawableEnd="@drawable/baseline_access_time_24"
         android:ems="10"
         android:hint="tap to set time"
         android:inputType="time"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/buttonFindRoute"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        android:drawableEnd="@drawable/baseline_access_time_24"
-        android:background="@android:drawable/editbox_background"/>
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout" />
 
     <TextView
         android:id="@+id/textView4"
@@ -154,6 +163,8 @@
         android:layout_height="wrap_content"
         android:text="At what time you'll be at the bus stop"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/linearLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
