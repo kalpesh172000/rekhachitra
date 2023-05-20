@@ -6,4 +6,12 @@
     </style>
 
     <style name="Theme.Rekhachitra" parent="Base.Theme.Rekhachitra" />
+    <style name="Theme.Rekhachitra1" parent="Base.Theme.Rekhachitra">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+
+        <!-- Defining that new color in ColorPrimaryDark -->
+        <item name="colorPrimaryDark">@color/colorOfStatusBar</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
 </resources>
