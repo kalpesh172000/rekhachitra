@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -135,11 +136,17 @@ public class PossibleRoutesOutput extends AppCompatActivity {
         resultBusCardArrayList.add(new ResultBusCard(totalHour,totalMinute,resultBusNodeArrayList));
 
 
-        adapterResultBusCard = new AdapterResultBusCard(this,resultBusCardArrayList);
+        adapterResultBusCard = new AdapterResultBusCard(this, resultBusCardArrayList, new RecyclerViewClickListener() {
+            @Override
+            public void recyclerViewListClicked(int position) {
+                Toast.makeText(PossibleRoutesOutput.this,
+                        resultBusCardArrayList.get(position).resultBusNodeArrayList.get(position).source,
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         parentRv = findViewById(R.id.parentRv);
         parentRv.setLayoutManager(linearLayoutManager);
         parentRv.setAdapter(adapterResultBusCard);
-
     }
 }

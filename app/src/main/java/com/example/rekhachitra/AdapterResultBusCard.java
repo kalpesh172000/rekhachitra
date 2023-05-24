@@ -2,6 +2,7 @@ package com.example.rekhachitra;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,9 +21,12 @@ public class AdapterResultBusCard extends RecyclerView.Adapter<AdapterResultBusC
 
     ArrayList<ResultBusCard> resultBusCardArrayList;
 
-    public AdapterResultBusCard(Activity activity, ArrayList<ResultBusCard> resultBusCardArrayList) {
+    RecyclerViewClickListener recyclerViewClickListener;
+
+    public AdapterResultBusCard(Activity activity, ArrayList<ResultBusCard> resultBusCardArrayList, RecyclerViewClickListener recyclerViewClickListener) {
         this.activity = activity;
         this.resultBusCardArrayList = resultBusCardArrayList;
+        this.recyclerViewClickListener = recyclerViewClickListener;
     }
 
     @NonNull
@@ -49,7 +53,7 @@ public class AdapterResultBusCard extends RecyclerView.Adapter<AdapterResultBusC
         return resultBusCardArrayList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
         TextView textViewTotalTime;
 
@@ -59,6 +63,14 @@ public class AdapterResultBusCard extends RecyclerView.Adapter<AdapterResultBusC
             super(itemView);
             textViewTotalTime = itemView.findViewById(R.id.textViewTotalTime);
             nestedRv=itemView.findViewById(R.id.nestedRv);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view)
+        {
+            Log.d("kalpesh","holderonlclick");
+            recyclerViewClickListener.recyclerViewListClicked(getAdapterPosition());
         }
     }
 }
