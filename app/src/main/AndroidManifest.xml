@@ -12,25 +12,40 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rekhachitra"
         tools:targetApi="31">
+
+
         <activity
-            android:name=".SearchRoute"
-            android:theme="@style/Theme.Rekhachitra1"
-            android:exported="false" >
+            android:name=".PossibleRoutesOutput"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.ALTERNATIVE" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".SearchRoute"
+            android:exported="false"
+            android:theme="@style/Theme.Rekhachitra1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.ALTERNATIVE" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.Rekhachitra1"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.Rekhachitra1">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

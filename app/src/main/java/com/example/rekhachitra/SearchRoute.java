@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.icu.util.Calendar;
 import android.os.Bundle;
@@ -275,6 +276,15 @@ public class SearchRoute extends AppCompatActivity {
                         true);
                 timePickerDialog.show();
                 editTextTime.clearFocus();
+            }
+        });
+
+
+        buttonFindRoute.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(SearchRoute.this , PossibleRoutesOutput.class);
+                startActivity(i);
             }
         });
 
