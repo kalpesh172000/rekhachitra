@@ -25,7 +25,20 @@
             android:gravity="center"
             android:text="18:23"
             android:textColor="@color/black"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
+        <LinearLayout
+            android:id="@+id/black_line"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#2196F3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintVertical_bias="1"
+            app:layout_constraintStart_toStartOf="parent"
+            android:orientation="horizontal" />
 
         <androidx.recyclerview.widget.RecyclerView
 

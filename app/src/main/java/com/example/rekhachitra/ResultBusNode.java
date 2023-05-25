@@ -1,6 +1,8 @@
 package com.example.rekhachitra;
 
-public class ResultBusNode {
+import java.io.Serializable;
+
+public class ResultBusNode implements Serializable {
     short busId;
     String source,destination;
     byte sourceHour,sourceMinute;

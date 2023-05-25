@@ -1,8 +1,9 @@
 package com.example.rekhachitra;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ResultBusCard {
+public class ResultBusCard implements Serializable {
     byte totalHour,totalMinute;
     ArrayList<ResultBusNode> resultBusNodeArrayList;
 
