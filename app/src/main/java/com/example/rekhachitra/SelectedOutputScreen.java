@@ -29,15 +29,15 @@ public class SelectedOutputScreen extends AppCompatActivity {
         adapterSelectedCard = new AdapterSelectedCard(this,resultBusNodeArrayList , new RecyclerViewClickListener() {
             @Override
             public void recyclerViewListClicked(int position) {
-                Toast.makeText(SelectedOutputScreen.this,
-                        resultBusNodeArrayList.get(position).destination,
-                        Toast.LENGTH_SHORT).show();
+//                Toast.makeText(SelectedOutputScreen.this,
+//                        resultBusNodeArrayList.get(position).destination,
+//                        Toast.LENGTH_SHORT).show();
 
 
 //                ResultBusNode resultBusNode = resultBusCard.resultBusNodeArrayList.get(position);
-//                Intent intent = new Intent(SelectedOutputScreen.this,BusRoute.class);
-//                intent.putExtra("resultBusCard" , resultBusCard);
-//                startActivity(intent);
+                Intent intent = new Intent(SelectedOutputScreen.this,BusRouteScreen.class);
+                //intent.putExtra("resultBusCard" , resultBusCard);
+                startActivity(intent);
             }
         });
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);

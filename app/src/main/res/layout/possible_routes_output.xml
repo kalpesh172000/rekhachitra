@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PossibleRoutesOutput">
+    tools:context=".PossibleRoutesOutput"
+    >
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarPossibleRoutesOutput"
         android:layout_width="0dp"
@@ -65,11 +66,12 @@
         android:id="@+id/parentRv"
         android:layout_width="match_parent"
         app:layout_constraintVertical_bias="0.0"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        tools:listitem="@layout/bus_card"/>
+        tools:listitem="@layout/bus_card"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
