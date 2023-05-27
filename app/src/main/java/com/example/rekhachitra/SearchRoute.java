@@ -64,7 +64,7 @@ public class SearchRoute extends AppCompatActivity {
 
 
         //reading csv file and extracting locations data to put into autocomplete
-        InputStream inputStreams = getResources().openRawResource(R.raw.sampletest);
+        InputStream inputStreams = getResources().openRawResource(R.raw.edgess);
         String  string;
         try {
             string = IOUtils.toString(inputStreams);
