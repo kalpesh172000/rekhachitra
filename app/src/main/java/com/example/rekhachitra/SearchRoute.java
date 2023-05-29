@@ -50,6 +50,8 @@ public class SearchRoute extends AppCompatActivity {
 
     CSVReader reader = null;
 
+    InputStream inputStreams;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +66,7 @@ public class SearchRoute extends AppCompatActivity {
 
 
         //reading csv file and extracting locations data to put into autocomplete
-        InputStream inputStreams = getResources().openRawResource(R.raw.edgess);
+        inputStreams = getResources().openRawResource(R.raw.edgess);
         String  string;
         try {
             string = IOUtils.toString(inputStreams);
@@ -283,13 +285,11 @@ public class SearchRoute extends AppCompatActivity {
         buttonFindRoute.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(SearchRoute.this , PossibleRoutesOutput.class);
-                startActivity(i);
+//                Intent i = new Intent(SearchRoute.this , PossibleRoutesOutput.class);
+//                startActivity(i);
+                MultiBusAlgorithm multiBusAlgorithm=new MultiBusAlgorithm();
+                multiBusAlgorithm.getPossibleRoutes(getResources().openRawResource(R.raw.edgess));
             }
         });
-
-
-
-
     }
 }
