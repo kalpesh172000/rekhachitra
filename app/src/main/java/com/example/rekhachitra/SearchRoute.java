@@ -89,6 +89,9 @@ public class SearchRoute extends AppCompatActivity {
                 throw new RuntimeException(e);
             }
         }
+//        GetBusScheduleAndBusRoutes getBusScheduleAndBusRoutes = new GetBusScheduleAndBusRoutes();
+//        getBusScheduleAndBusRoutes.getRoute(getResources().openRawResource(R.raw.bus_route),locations);
+//        getBusScheduleAndBusRoutes.getTime(getResources().openRawResource(R.raw.bus_schedule));
 
 
         //open a searchable spinner dialog
@@ -285,10 +288,18 @@ public class SearchRoute extends AppCompatActivity {
         buttonFindRoute.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent i = new Intent(SearchRoute.this , PossibleRoutesOutput.class);
-//                startActivity(i);
-                MultiBusAlgorithm multiBusAlgorithm=new MultiBusAlgorithm();
-                multiBusAlgorithm.getPossibleRoutes(getResources().openRawResource(R.raw.edgess));
+                String source = String.valueOf(editTextSource.getText());
+                String destination = String.valueOf(editTextDestination.getText());
+                MultipathGraph multiBusAlgorithm = new MultipathGraph();
+                GetBusScheduleAndBusRoutes getBusScheduleAndBusRoutes = new GetBusScheduleAndBusRoutes();
+                getBusScheduleAndBusRoutes.getRoute(getResources().openRawResource(R.raw.bus_route),locations);
+                getBusScheduleAndBusRoutes.getTime(getResources().openRawResource(R.raw.bus_schedule));
+                multiBusAlgorithm.getPossibleRoutes(source,destination,getResources().openRawResource(R.raw.edgess));
+
+/*                Intent i = new Intent(SearchRoute.this , PossibleRoutesOutput.class);
+                startActivity(i);
+                MultiBusAlgorithm multiBusAlgorithm=new MultiBusAlgorithm();*/
+
             }
         });
     }

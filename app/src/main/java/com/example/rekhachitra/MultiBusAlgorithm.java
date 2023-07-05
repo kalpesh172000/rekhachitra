@@ -112,11 +112,13 @@ public class MultiBusAlgorithm
         return graph;
     }
 
-    public ArrayList<LinkedList<String>> findAllPaths(Map<String, Map<String, Integer>> graph, String src, String dest) {
+    public ArrayList<LinkedList<String>> findAllPaths(Map<String,Map<String, Integer>> graph,
+                                                      String source,
+                                                      String destination) {
         ArrayList<LinkedList<String>> result = new ArrayList<>();
         LinkedList<String> path = new LinkedList<>();
-        path.add(src);
-        findAllPathsHelper(graph, src, dest, path, result);
+        path.add(source);
+        findAllPathsHelper(graph, source, destination, path, result);
         return result;
     }
 

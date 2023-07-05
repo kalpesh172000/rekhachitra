@@ -36,7 +36,8 @@ public class BusRouteScreen extends AppCompatActivity {
         busStopArrayList.add(new BusStop("shinde goan",58));
         busStopArrayList.add(new BusStop("palse",60));
         busStopArrayList.add(new BusStop("nashik road",62));
-        busStopArrayList.add(new BusStop("nashik road",62));
+
+
 
         AdapterBusStop adapterBusStop = new AdapterBusStop(this,busStopArrayList,9,15);
         parentRv = findViewById(R.id.parentRv);
