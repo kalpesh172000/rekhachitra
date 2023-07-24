@@ -292,8 +292,10 @@ public class SearchRoute extends AppCompatActivity {
                 String destination = String.valueOf(editTextDestination.getText());
                 MultipathGraph multiBusAlgorithm = new MultipathGraph();
                 GetBusScheduleAndBusRoutes getBusScheduleAndBusRoutes = new GetBusScheduleAndBusRoutes();
-                getBusScheduleAndBusRoutes.getRoute(getResources().openRawResource(R.raw.bus_route),locations);
-                getBusScheduleAndBusRoutes.getTime(getResources().openRawResource(R.raw.bus_schedule));
+//                getBusScheduleAndBusRoutes.getRoute(getResources().openRawResource(R.raw.bus_route),locations);
+//                getBusScheduleAndBusRoutes.getTime(getResources().openRawResource(R.raw.bus_schedule));
+                getBusScheduleAndBusRoutes.displayTimeAndRoute(getBusScheduleAndBusRoutes.getTime(getResources().openRawResource(R.raw.bus_schedule)),
+                        getBusScheduleAndBusRoutes.getRoute(getResources().openRawResource(R.raw.bus_route),locations));
                 multiBusAlgorithm.getPossibleRoutes(source,destination,getResources().openRawResource(R.raw.edgess));
 
 /*                Intent i = new Intent(SearchRoute.this , PossibleRoutesOutput.class);

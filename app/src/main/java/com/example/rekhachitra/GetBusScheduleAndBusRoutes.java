@@ -24,7 +24,7 @@ import java.util.Set;
 
 public class GetBusScheduleAndBusRoutes
 {
-    public void getTime(InputStream inputStream)
+    public Map<Short, Map<Byte, Byte>> getTime(InputStream inputStream)
     {
         Map<Short, Map<Byte, Byte>> timeGraph=new HashMap<>();
         String  string;
@@ -61,10 +61,11 @@ public class GetBusScheduleAndBusRoutes
             }
         }
         //Log.d("kalpeshTimeGraph", timeGraph.toString());
+        return timeGraph;
     }
-    public void getRoute(InputStream inputStream,ArrayList<String> locations)
+    public Map<Short, List<routeElement>> getRoute(InputStream inputStream,ArrayList<String> locations)
     {
-        Map<Short, LinkedList<routeElement>> routeGraph = new HashMap<>();
+        Map<Short, List<routeElement>> routeGraph = new HashMap<>();
         String  string;
         try {
             string = IOUtils.toString(inputStream);
@@ -83,12 +84,12 @@ public class GetBusScheduleAndBusRoutes
                     break;
                 }
                 short routeID=Short.parseShort(routeData[0]);
-                LinkedList<routeElement> routeElement = new LinkedList<>();
-                routeElement element = new routeElement();
+                List<routeElement> routeElement = new LinkedList<>();
                 for (int i = 1; i < routeData.length - 1; i += 2)
                 {
                     if(!locations.contains(routeData[i]))
                         Log.d("kalpeshRouteError",routeData[i]);
+                    routeElement element = new routeElement();
                     element.location = routeData[i];
                     element.offset = Byte.parseByte(routeData[i+1]);
                     routeElement.add(element);
@@ -98,14 +99,14 @@ public class GetBusScheduleAndBusRoutes
 
 
                 short routeID1=(short) (Short.parseShort(routeData[0]) + 1000);
-                LinkedList<routeElement> routeElement1 = new LinkedList<>();
-                routeElement element1 = new routeElement();
+                List<routeElement> routeElement1 = new LinkedList<>();
                 offset = Byte.parseByte(routeData[routeData.length-1]);
                 current=0;
                 for(int i = routeData.length-1;i>1;i-=2)
                 {
                     if(!locations.contains(routeData[i-1]))
                         Log.d("kalpeshRouteError",routeData[i-1]);
+                    routeElement element1 = new routeElement();
                     element1.offset=(byte) (offset-Byte.parseByte(routeData[i])+current);
                     element1.location=routeData[i-1];
                     routeElement1.add(element1);
@@ -121,5 +122,24 @@ public class GetBusScheduleAndBusRoutes
             }
         }
         //Log.d("kalpeshRouteGraph", routeGraph.toString());
+        return routeGraph;
+    }
+
+
+    public void displayTimeAndRoute(Map<Short, Map<Byte, Byte>> timeGraph, Map<Short, List<routeElement>> routeGraph)
+    {
+//        for(Map.Entry<Short, Map<Byte, Byte>> time : timeGraph.entrySet())
+//        {
+//            Log.d
+//        }
+
+        for(Map.Entry<Short, List<routeElement>> route : routeGraph.entrySet())
+        {
+            Log.d("kalpehsDisplayRouteGraph", route.getKey() + "_______________________________________________________________" + route.getValue().size());
+            for(int i = 0 ;i<route.getValue().size();i++)
+            {
+                Log.d("kalpehsDisplayRouteGraph", route.getValue().get(i).location + " : " + route.getValue().get(i).offset);
+            }
+        }
     }
 }

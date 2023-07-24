@@ -39,116 +39,55 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 public class MultiBusAlgorithm
 {
+    Map<Short, Map<Byte, Byte>> busSchedule; //bus schedule like 146-6,0-6,30-7,0
+    Map<Short, List<routeElement>> busRoute; //bus route like 146-sinnar 0-nashik 4
+    ArrayList<String> locations; //array of all locations
+    Map<List<String>,Integer> allPath; //all  possible paths from user source to user destination calculated with graph
 
-    CSVReader reader;
-
-
-    public void printGraph(Map<String, Map<String, Integer>> graph) {
-        StringBuilder sb = new StringBuilder();
-        for (Map.Entry<String, Map<String, Integer>> entry : graph.entrySet()) {
-            String key = entry.getKey();
-            Map<String, Integer> value = entry.getValue();
-            sb.append(key + ": " + value.toString() + "\n");
-        }
-        Log.d("kalpesh1Graph", sb.toString());
-    }
-
-
-    public void printPaths(ArrayList<LinkedList<String>> paths) {
-        Log.d("kalpesh2Graph", "here");
-        for (LinkedList<String> path : paths) {
-                Log.d("kalpesh2Graph", path.toString());
-        }
-    }
-
-    Map<String, Map<String, Integer>> createGraphFromCSV(Map<String, Map<String, Integer>> graph,InputStream inputStream)
+    public MultiBusAlgorithm(Map<Short, Map<Byte, Byte>> busSchedule, Map<Short, List<routeElement>> busRoute, ArrayList<String> locations /*, Map<List<String>, Integer> allPath*/)
     {
+        this.busSchedule = busSchedule;
+        this.busRoute = busRoute;
+        this.locations = locations;
+        //this.allPath = allPath;
+    }
 
-        String  string;
-        try {
-            string = IOUtils.toString(inputStream);
-            Log.d("kalpeshGraph1", string);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        reader=new CSVReader(new StringReader(string));
-        String[] nodeData;
-        while (true)
+    /*public void  getResult(byte hour,byte minute,String source,String destination)
+    {
+        int i,j,k;
+
+
+        for(Map.Entry<List<String>,Integer> path : allPath.entrySet())
         {
-            try
+            for(i=0;i<path.getKey().size();i++)
             {
-                if ((nodeData = reader.readNext()) == null)
+                String currentSource = path.getKey().get(i);
+                String currentDestination = path.getKey().get(i+1);
+                for(Map.Entry<Short, List<routeElement>> route : busRoute.entrySet())
                 {
-                    Log.d("kalpesh3Graph", "this was end");
-                    break;
+                    //check if bus route is correct route
+                    for(j = 0 ;j<route.getValue().size();j++)
+                    {
+                        //Log.d("kalpehsDisplayRouteGraph", route.getValue().get(i).location +
+                        // " : " + route.getValue().get(i).offset);
+                    }
                 }
-
-                String source = nodeData[0];
-                Map<String, Integer> neighbors = new HashMap<>();
-
-                for (int i = 1; i < nodeData.length - 1; i += 2) {
-                    String destination = nodeData[i];
-                    if(destination.equals(""))
-                        break;
-                    Log.d("kalpesh4Graph", destination);
-                    int cost = Integer.parseInt(nodeData[i + 1]);
-                    neighbors.put(destination, cost);
-                }
-
-                graph.put(source, neighbors);
-
-
-            } catch (IOException | CsvValidationException | NumberFormatException e)
-            {
-                throw new RuntimeException(e);
             }
         }
+    }*/
 
-
-        return graph;
-    }
-
-    public ArrayList<LinkedList<String>> findAllPaths(Map<String,Map<String, Integer>> graph,
-                                                      String source,
-                                                      String destination) {
-        ArrayList<LinkedList<String>> result = new ArrayList<>();
-        LinkedList<String> path = new LinkedList<>();
-        path.add(source);
-        findAllPathsHelper(graph, source, destination, path, result);
-        return result;
-    }
-
-    private void findAllPathsHelper(Map<String, Map<String, Integer>> graph, String src, String dest,
-                                    LinkedList<String> path, ArrayList<LinkedList<String>> result){
-        if (src.equals(dest)) {
-            result.add(new LinkedList<>(path));
-            return;
-        }
-        Map<String, Integer> neighbors = graph.get(src);
-        if (neighbors==null)
-            Log.d("kalpesh3Graph", "this graph was end" + src);
-        for (String neighbor : neighbors.keySet()) {
-            if (!path.contains(neighbor)) {
-                path.add(neighbor);
-                findAllPathsHelper(graph, neighbor, dest, path, result);
-                path.removeLast();
-            }
-        }
-    }
-
-
-
-//    public void getPossibleRoutes(String source , String destination , int hour , int minute , InputStream inputStream)
-    public void getPossibleRoutes(InputStream inputStream)
+    //this will take input from user as listed in the arguments and return the result that will be passed to the ui
+    public void  getResult(byte hour,byte minute,String source,String destination, Map<List<String>, Integer> allPath)
     {
-        Map<String, Map<String, Integer>> graph = new HashMap<>();
-        graph=createGraphFromCSV(graph,inputStream);
-        printGraph(graph);
-        ArrayList<LinkedList<String>> paths= findAllPaths(graph,"Sinnar Phata","K K Wagh");
-        printPaths(paths);
+        this.allPath=allPath;
+        for(Map.Entry<List<String>,Integer> path : allPath.entrySet())
+        {
+        }
+
     }
 }
