@@ -1,0 +1,21 @@
+main(source,destinaiton,hour,time,allpath)
+{
+    this.allPath=allPath;
+    PriorityList<ResultBusCard> resultBusCardArrayList; // that sorts on basis of the totalHour and totalMinute in ResultNode object
+    for(path in allPath)
+    {
+        this.path=path;
+        csource = path(i);
+        cdestination = path(i+1);
+        resultBusCardArrayList = dfsInit(hour,minute,resultBusCardArrayList,csource,cdestionation,i,i+1)
+
+
+    }
+}
+
+resultBusCardArrayList dfsInit(hour,minute,resultBusCardArrayList,csource,cdestionation,i,j)
+{
+    resultBusNodeArrayList = new arraylist;
+
+
+}

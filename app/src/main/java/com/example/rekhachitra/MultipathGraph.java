@@ -17,6 +17,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.PriorityQueue;
 
 public class MultipathGraph
 {
@@ -63,11 +64,11 @@ public class MultipathGraph
     }
 
 
-    Map<List<String>,Integer> findAllPaths(String source,
-                                           String destination,
-                                           Map<String, Map<String, Integer>> graph)
+    PriorityQueue<PossiblePaths> findAllPaths(String source,
+                                              String destination,
+                                              Map<String, Map<String, Integer>> graph)
     {
-        Map<List<String>,Integer> result = new HashMap<>();
+        PriorityQueue<PossiblePaths> result = new PriorityQueue<>(5,new PossiblePathsComparator());
         boolean[] isVisited = new boolean[vertices];
         int distance=0;
         ArrayList<String> pathList= new ArrayList<>();
@@ -77,17 +78,17 @@ public class MultipathGraph
     }
 
 
-    Map<List<String>,Integer> findAllPathsUtil(String source, String destination,
+    PriorityQueue<PossiblePaths> findAllPathsUtil(String source, String destination,
                                                boolean[] isVisited,
                                                List<String> localpathList,
                                                int distance,
-                                               Map<List<String>,Integer> result,
+                                               PriorityQueue<PossiblePaths> result,
                                                Map<String, Map<String, Integer>> graph)
     {
         if(source.equals(destination))
         {
             System.out.print(localpathList + " : " + distance + "\n");
-            result.put(new ArrayList<>(localpathList),distance);
+            result.add(new PossiblePaths(new ArrayList<>(localpathList),distance));
             return result;
         }
 
@@ -129,11 +130,12 @@ public class MultipathGraph
     }
 
 
-    void printAllPaths(Map<List<String>,Integer> result)
+    void printAllPaths(ArrayList<PossiblePaths> result)
     {
-        for(Map.Entry<List<String>,Integer> entry : result.entrySet())
+        Log.d("kalpeshAllPossiblePaths", "\n----------------------------------------");
+        for(PossiblePaths entry : result)
         {
-            Log.d("kalpeshAllPossiblePaths", "\n" + entry.getKey() + " : " + entry.getValue());
+            Log.d("kalpeshAllPossiblePaths", "\n" + entry.path + " : " + entry.totalTime);
         }
     }
 
@@ -149,7 +151,14 @@ public class MultipathGraph
     {
         Map<String, Map<String, Integer>> graph = new HashMap<>();
         graph=createGraphFromCSV(graph,inputStream);
-        Map<List<String>,Integer> result= findAllPaths(source,destination,graph);
-        printAllPaths(result);
+        PriorityQueue<PossiblePaths> result= findAllPaths(source,destination,graph);
+        ArrayList<PossiblePaths> result1 = new ArrayList<>();
+        for(int i = 0;i < 5;i++)
+        {
+            result1.add(result.poll());
+            if(result.isEmpty())
+                break;
+        }
+        printAllPaths(result1);
     }
 }

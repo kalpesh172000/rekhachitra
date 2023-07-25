@@ -8,18 +8,17 @@ MET,Medical Fata,3,,,,
 K K Wagh,Amrut Dham,1,Aurangabad Naka,2,,
 Aurangabad Naka,K K Wagh,2,Tapovan,1,Panchavati Depot Corner,2
 Ganesh Mandir,Ayodhya Nagar,1,Amrut Dham,1,,
-Ayodhya Nagar,Hirawadi Fata,1,Ganesh Mandir,1,,
-Hirawadi Fata,Ayodhya Nagar,1,Hirawadi,1,,
-Hirawadi,Hirawadi Fata,1,Trimurti Nagar,1,,
-Trimurti Nagar,Hirawadi,1,Old Adgaon Naka,2,,
-Old Adgaon Naka,Panchavati Depot Corner,2,Nimani,2,Trimurti Nagar,2
+Ayodhya Nagar,Hirawadi Fata,2,Ganesh Mandir,1,,
+Hirawadi Fata,Ayodhya Nagar,2,Hirawadi,3,,
+Hirawadi,Hirawadi Fata,3,Trimurti Nagar,3,,
+Trimurti Nagar,Hirawadi,3,Old Adgaon Naka,3,,
+Old Adgaon Naka,Panchavati Depot Corner,2,Nimani,2,Trimurti Nagar,3
 Panchavati Depot Corner,Aurangabad Naka,2,Old Adgaon Naka,2,Dwarka,3
 Nimani,PK,1,Old Adgaon Naka,2,,
 PK,RK,1,Nimani,1,,
-RK,PK,1,CBS,3,Shalimar,2
-Shalimar,RK,2,CBS,2,Ganjmal,1
-CBS,New CBS,1,Shalimar,2,RK,3
-Ganjmal,Wadala Naka,1,Shalimar,1,,
+RK,PK,1,CBS,3,,
+CBS,New CBS,1,RK,3,Ganjmal,3
+Ganjmal,Wadala Naka,1,CBS,3,,
 Wadala Naka,Dwarka,1,Ganjmal,1,,
 Dwarka,Panchavati Depot Corner,3,Wadala Naka,1,Bodhale Nagar,2
 Bodhale Nagar,Dwarka,2,Gandhi Nagar,1,,
