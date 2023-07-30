@@ -6,7 +6,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class ResultBusCard implements Serializable {
-    byte totalHour,totalMinute;
+    public byte totalHour;
+    public byte totalMinute;
     public ArrayList<ResultBusNode> resultBusNodeArrayList;
 
     public ResultBusCard(byte totalHour, byte totalMinute, ArrayList<ResultBusNode> resultBusNodes) {

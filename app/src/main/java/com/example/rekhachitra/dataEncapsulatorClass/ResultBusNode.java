@@ -10,7 +10,7 @@ public class ResultBusNode implements Serializable {
     public byte sourceMinute;
     public byte destinationHour;
     public byte destinationMinute;
-    byte busStartHour,busStartMinute;
+    public byte busStartHour,busStartMinute;
 
     public ResultBusNode(short busId, String source, String destination, byte sourceHour, byte sourceMinute, byte destinationHour, byte destinationMinute, byte busStartHour, byte busStartMinute) {
         this.busId = busId;

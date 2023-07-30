@@ -36,9 +36,9 @@ public class SelectedOutputScreen extends AppCompatActivity {
 //                        Toast.LENGTH_SHORT).show();
 
 
-//                ResultBusNode resultBusNode = resultBusCard.resultBusNodeArrayList.get(position);
+                ResultBusNode resultBusNode = resultBusCard.resultBusNodeArrayList.get(position);
                 Intent intent = new Intent(SelectedOutputScreen.this, BusRouteScreen.class);
-                //intent.putExtra("resultBusCard" , resultBusCard);
+                intent.putExtra("resultBusNode" ,resultBusNode);
                 startActivity(intent);
             }
         });

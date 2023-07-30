@@ -7,9 +7,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.example.rekhachitra.R;
+import com.example.rekhachitra.algorithm.GetBusScheduleAndBusRoutes;
+import com.example.rekhachitra.dataEncapsulatorClass.ResultBusNode;
 import com.example.rekhachitra.dataEncapsulatorClass.RouteElement;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 public class BusRouteScreen extends AppCompatActivity {
 
@@ -20,6 +25,14 @@ public class BusRouteScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bus_route_screen);
+        ResultBusNode resultBusNode = (ResultBusNode)getIntent().getSerializableExtra("resultBusNode");
+        short busId = resultBusNode.busId;
+        byte cHour = resultBusNode.busStartHour;
+        byte cMinute = resultBusNode.busStartMinute;
+        GetBusScheduleAndBusRoutes getBusScheduleAndBusRoutes = new GetBusScheduleAndBusRoutes();
+        Map<Short, List<RouteElement>> routeGraph = getBusScheduleAndBusRoutes.getRoute(getResources().openRawResource(R.raw.bus_route));
+        ArrayList<RouteElement> routeElementArrayList = new ArrayList<>(Objects.requireNonNull(routeGraph.get(busId)));
+/*
         routeElementArrayList = new ArrayList<>();
         routeElementArrayList.add(new RouteElement("sinnar",(byte)0));
         routeElementArrayList.add(new RouteElement("vavi ves ",(byte)5));
@@ -38,10 +51,11 @@ public class BusRouteScreen extends AppCompatActivity {
         routeElementArrayList.add(new RouteElement("shinde goan",(byte)58));
         routeElementArrayList.add(new RouteElement("palse",(byte)60));
         routeElementArrayList.add(new RouteElement("nashik road",(byte)62));
+*/
 
 
 
-        AdapterBusStop adapterBusStop = new AdapterBusStop(this,routeElementArrayList,(byte)9,(byte)15);
+        AdapterBusStop adapterBusStop = new AdapterBusStop(this,routeElementArrayList,cHour,cMinute);
         parentRv = findViewById(R.id.parentRv);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         parentRv.setLayoutManager(linearLayoutManager);

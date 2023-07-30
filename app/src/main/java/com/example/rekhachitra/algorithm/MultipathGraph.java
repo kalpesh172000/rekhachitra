@@ -147,7 +147,7 @@ public class MultipathGraph
     }
 
 
-    public void getPossibleRoutes(String source, String destination, InputStream inputStream)
+    public ArrayList<PossiblePaths> getPossibleRoutes(String source, String destination, InputStream inputStream)
     {
         Map<String, Map<String, Integer>> graph = new HashMap<>();
         graph=createGraphFromCSV(graph,inputStream);
@@ -160,5 +160,6 @@ public class MultipathGraph
                 break;
         }
         printAllPaths(result1);
+        return result1;
     }
 }

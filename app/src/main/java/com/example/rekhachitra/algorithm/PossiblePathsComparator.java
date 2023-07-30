@@ -2,6 +2,7 @@ package com.example.rekhachitra.algorithm;
 
 import com.example.rekhachitra.dataEncapsulatorClass.PossiblePaths;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
 public class PossiblePathsComparator implements Comparator<PossiblePaths>

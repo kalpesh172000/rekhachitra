@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.icu.util.Calendar;
 import android.os.Bundle;
@@ -21,8 +22,11 @@ import android.graphics.drawable.ColorDrawable;
 
 
 import com.example.rekhachitra.algorithm.GetBusScheduleAndBusRoutes;
+import com.example.rekhachitra.algorithm.MultiBusAlgorithm;
 import com.example.rekhachitra.algorithm.MultipathGraph;
 import com.example.rekhachitra.R;
+import com.example.rekhachitra.dataEncapsulatorClass.PossiblePaths;
+import com.example.rekhachitra.dataEncapsulatorClass.ResultBusCard;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 
@@ -54,6 +58,8 @@ public class SearchRoute extends AppCompatActivity {
     CSVReader reader = null;
 
     InputStream inputStreams;
+
+    MultiBusAlgorithm multiBusAlgorithm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,10 +100,7 @@ public class SearchRoute extends AppCompatActivity {
         }
         Collections.sort(locations);
         GetBusScheduleAndBusRoutes getBusScheduleAndBusRoutes = new GetBusScheduleAndBusRoutes();
-        getBusScheduleAndBusRoutes.getRoute(getResources().openRawResource(R.raw.bus_route),locations);
-        getBusScheduleAndBusRoutes.getTime(getResources().openRawResource(R.raw.bus_schedule));
-        getBusScheduleAndBusRoutes.getReverseRoute(getResources().openRawResource(R.raw.reverse));
-
+        multiBusAlgorithm = new MultiBusAlgorithm(getBusScheduleAndBusRoutes.getTime(getResources().openRawResource(R.raw.bus_schedule)),getBusScheduleAndBusRoutes.getRoute(getResources().openRawResource(R.raw.bus_route)),getBusScheduleAndBusRoutes.getReverseRoute(getResources().openRawResource(R.raw.reverse)));
 
         //open a searchable spinner dialog
         editTextSource.setOnClickListener(new View.OnClickListener() {
@@ -295,18 +298,24 @@ public class SearchRoute extends AppCompatActivity {
             public void onClick(View view) {
                 String source = String.valueOf(editTextSource.getText());
                 String destination = String.valueOf(editTextDestination.getText());
-                MultipathGraph multiBusAlgorithm = new MultipathGraph();
-                multiBusAlgorithm.getPossibleRoutes(source,destination,getResources().openRawResource(R.raw.edgess));
-/*               GetBusScheduleAndBusRoutes getBusScheduleAndBusRoutes = new GetBusScheduleAndBusRoutes();
-                getBusScheduleAndBusRoutes.getRoute(getResources().openRawResource(R.raw.bus_route),locations);
-                getBusScheduleAndBusRoutes.getTime(getResources().openRawResource(R.raw.bus_schedule));
-                getBusScheduleAndBusRoutes.displayTimeAndRoute(getBusScheduleAndBusRoutes.getTime(getResources().openRawResource(R.raw.bus_schedule)),
-                        getBusScheduleAndBusRoutes.getRoute(getResources().openRawResource(R.raw.bus_route),locations));
-
+                MultipathGraph multipathGraph = new MultipathGraph();
+                byte cHour,cMinute;
+                if(radioButtonCurrent.isChecked())
+                {
+                    cHour = (byte) calendar.get(Calendar.HOUR_OF_DAY);
+                    cMinute = (byte) calendar.get(Calendar.MINUTE);
+                }
+                else
+                {
+                    cHour = (byte) hour;
+                    cMinute = (byte) minute;
+                }
                 Intent i = new Intent(SearchRoute.this , PossibleRoutesOutput.class);
+                ArrayList<PossiblePaths> possiblePathsArrayList = multipathGraph.getPossibleRoutes(source,destination,getResources().openRawResource(R.raw.edgess));
+                ArrayList<ResultBusCard> resultBusCardArrayList = multiBusAlgorithm.getResult(cHour,cMinute,source,destination,possiblePathsArrayList);
+                i.putExtra("resultBusCardArrayList",resultBusCardArrayList);
                 startActivity(i);
-                MultiBusAlgorithm multiBusAlgorithm=new MultiBusAlgorithm();*/
-
+                //multiBusAlgorithm.displayResult(resultBusCardArrayList);
             }
         });
     }

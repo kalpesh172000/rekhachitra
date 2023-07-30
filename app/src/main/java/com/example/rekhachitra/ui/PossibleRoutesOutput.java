@@ -1,13 +1,16 @@
 package com.example.rekhachitra.ui;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.example.rekhachitra.R;
+import com.example.rekhachitra.dataEncapsulatorClass.PossiblePaths;
 import com.example.rekhachitra.dataEncapsulatorClass.ResultBusCard;
 import com.example.rekhachitra.dataEncapsulatorClass.ResultBusNode;
 
@@ -34,13 +37,15 @@ public class PossibleRoutesOutput extends AppCompatActivity{
     byte veryStartHour,veryStartMinute,veryEndHour,veryEndMinute,totalHour,totalMinute;
     //--------------------------
 
+    @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.possible_routes_output);
+        ArrayList<ResultBusCard> resultBusCardArrayList = (ArrayList<ResultBusCard>)getIntent().getSerializableExtra("resultBusCardArrayList");
 
 
-        resultBusCardArrayList=new ArrayList<>();
+        /*resultBusCardArrayList=new ArrayList<>();
 
         resultBusNodeArrayList = new ArrayList<>();
         //---one bus
@@ -267,7 +272,7 @@ public class PossibleRoutesOutput extends AppCompatActivity{
             totalHour--;
         }
         resultBusCardArrayList.add(new ResultBusCard(totalHour,totalMinute,resultBusNodeArrayList));
-
+*/
 
         adapterResultBusCard = new AdapterResultBusCard(this, resultBusCardArrayList, new RecyclerViewClickListener() {
             @Override
