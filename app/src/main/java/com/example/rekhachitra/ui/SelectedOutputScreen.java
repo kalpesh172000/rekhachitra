@@ -1,4 +1,4 @@
-package com.example.rekhachitra;
+package com.example.rekhachitra.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -6,8 +6,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
+
+import com.example.rekhachitra.R;
+import com.example.rekhachitra.dataEncapsulatorClass.ResultBusCard;
+import com.example.rekhachitra.dataEncapsulatorClass.ResultBusNode;
 
 import java.util.ArrayList;
 
@@ -35,7 +37,7 @@ public class SelectedOutputScreen extends AppCompatActivity {
 
 
 //                ResultBusNode resultBusNode = resultBusCard.resultBusNodeArrayList.get(position);
-                Intent intent = new Intent(SelectedOutputScreen.this,BusRouteScreen.class);
+                Intent intent = new Intent(SelectedOutputScreen.this, BusRouteScreen.class);
                 //intent.putExtra("resultBusCard" , resultBusCard);
                 startActivity(intent);
             }

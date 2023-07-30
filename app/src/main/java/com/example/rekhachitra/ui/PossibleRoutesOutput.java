@@ -1,4 +1,4 @@
-package com.example.rekhachitra;
+package com.example.rekhachitra.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -6,9 +6,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
-import java.io.Serializable;
+import com.example.rekhachitra.R;
+import com.example.rekhachitra.dataEncapsulatorClass.ResultBusCard;
+import com.example.rekhachitra.dataEncapsulatorClass.ResultBusNode;
+
 import java.util.ArrayList;
 
 public class PossibleRoutesOutput extends AppCompatActivity{
@@ -274,7 +276,7 @@ public class PossibleRoutesOutput extends AppCompatActivity{
 //                        resultBusCardArrayList.get(position).resultBusNodeArrayList.get(position).source,
 //                        Toast.LENGTH_SHORT).show();
                 ResultBusCard resultBusCard = resultBusCardArrayList.get(position);
-                Intent intent = new Intent(PossibleRoutesOutput.this,SelectedOutputScreen.class);
+                Intent intent = new Intent(PossibleRoutesOutput.this, SelectedOutputScreen.class);
                 intent.putExtra("resultBusCard" , resultBusCard);
                 startActivity(intent);
             }

@@ -1,4 +1,4 @@
-package com.example.rekhachitra;
+package com.example.rekhachitra.ui;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -12,8 +12,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.rekhachitra.R;
+import com.example.rekhachitra.dataEncapsulatorClass.RouteElement;
 
 import java.util.ArrayList;
 
@@ -21,19 +23,19 @@ public class AdapterBusStop extends RecyclerView.Adapter<AdapterBusStop.ViewHold
 
     Activity activity;
 
-    ArrayList<BusStop> busStopArrayList;
+    ArrayList<RouteElement> routeElementArrayList;
 
-    int startHour,startMinute , hour, minute , currentHour, currentMinute;
+    byte startHour,startMinute , hour, minute , currentHour, currentMinute;
 
     android.icu.util.Calendar calendar = Calendar.getInstance();
 
-    public AdapterBusStop(Activity activity, ArrayList<BusStop> busStopArrayList, int startHour, int startMinute) {
+    public AdapterBusStop(Activity activity, ArrayList<RouteElement> routeElementArrayList, byte  startHour, byte startMinute) {
         this.activity = activity;
-        this.busStopArrayList = busStopArrayList;
+        this.routeElementArrayList = routeElementArrayList;
         this.startHour = startHour;
         this.startMinute = startMinute;
-        currentHour = calendar.get(android.icu.util.Calendar.HOUR_OF_DAY);
-        currentMinute = calendar.get(android.icu.util.Calendar.MINUTE);
+        currentHour = (byte)calendar.get(android.icu.util.Calendar.HOUR_OF_DAY);
+        currentMinute = (byte)calendar.get(android.icu.util.Calendar.MINUTE);
     }
 
     @NonNull
@@ -46,17 +48,17 @@ public class AdapterBusStop extends RecyclerView.Adapter<AdapterBusStop.ViewHold
     @SuppressLint({"SetTextI18n", "ResourceAsColor"})
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        BusStop busStop = busStopArrayList.get(position);
-        minute = busStop.offset;
-        minute = startMinute + minute;
+        RouteElement routeElement = routeElementArrayList.get(position);
+        minute = routeElement.offset;
+        minute = (byte) ((byte)startMinute + minute);
         hour = startHour;
         if(minute>59)
         {
             hour++;
-            minute=minute-60;
+            minute= (byte) (minute-60);
         }
         holder.textViewOffset.setText(Integer.toString(hour) + ":" + Integer.toString(minute));
-        holder.textViewName.setText(busStop.name);
+        holder.textViewName.setText(routeElement.location);
         if(hour>currentHour || (hour==currentHour && minute>currentMinute))
         {
             Log.d("kalpeshtime",currentHour+ " " + currentMinute + " blue");
@@ -70,8 +72,9 @@ public class AdapterBusStop extends RecyclerView.Adapter<AdapterBusStop.ViewHold
     }
 
     @Override
-    public int getItemCount() {
-        return busStopArrayList.size();
+    public int getItemCount()
+    {
+        return routeElementArrayList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder

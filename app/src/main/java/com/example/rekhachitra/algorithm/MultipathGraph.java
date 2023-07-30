@@ -1,11 +1,12 @@
-package com.example.rekhachitra;
+package com.example.rekhachitra.algorithm;
 
 import android.util.Log;
 
+import com.example.rekhachitra.algorithm.PossiblePathsComparator;
+import com.example.rekhachitra.dataEncapsulatorClass.PossiblePaths;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 
-import org.apache.commons.collections.MultiMap;
 import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
@@ -13,7 +14,6 @@ import java.io.InputStream;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;

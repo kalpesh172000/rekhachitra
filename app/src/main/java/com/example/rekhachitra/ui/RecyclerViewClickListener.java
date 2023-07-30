@@ -1,4 +1,4 @@
-package com.example.rekhachitra;
+package com.example.rekhachitra.ui;
 
 public interface RecyclerViewClickListener {
 

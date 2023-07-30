@@ -20,7 +20,7 @@ RK,PK,1,CBS,3,,
 CBS,New CBS,1,RK,3,Ganjmal,3
 Ganjmal,Wadala Naka,1,CBS,3,,
 Wadala Naka,Dwarka,1,Ganjmal,1,,
-Dwarka,Panchavati Depot Corner,3,Wadala Naka,1,Bodhale Nagar,2
+Dwarka,Panchavati Depot Corner,3,Wadala Naka,1,Bodhale Nagar,3
 Bodhale Nagar,Dwarka,2,Gandhi Nagar,1,,
 Gandhi Nagar,Nehru Nagar,2,Bodhale Nagar,1,,
 Nehru Nagar,Gandhi Nagar,2,Datta Mandir,2,,

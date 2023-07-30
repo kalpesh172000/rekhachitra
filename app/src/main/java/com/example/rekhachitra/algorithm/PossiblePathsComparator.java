@@ -1,4 +1,6 @@
-package com.example.rekhachitra;
+package com.example.rekhachitra.algorithm;
+
+import com.example.rekhachitra.dataEncapsulatorClass.PossiblePaths;
 
 import java.util.Comparator;
 

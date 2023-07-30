@@ -1,10 +1,12 @@
-package com.example.rekhachitra;
+package com.example.rekhachitra.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.rekhachitra.R;
 
 public class MainActivity extends AppCompatActivity {
 

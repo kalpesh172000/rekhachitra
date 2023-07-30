@@ -1,11 +1,10 @@
-package com.example.rekhachitra;
+package com.example.rekhachitra.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
-import android.content.Intent;
 import android.graphics.Color;
 import android.icu.util.Calendar;
 import android.os.Bundle;
@@ -21,6 +20,9 @@ import android.widget.RadioButton;
 import android.graphics.drawable.ColorDrawable;
 
 
+import com.example.rekhachitra.algorithm.GetBusScheduleAndBusRoutes;
+import com.example.rekhachitra.algorithm.MultipathGraph;
+import com.example.rekhachitra.R;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 
@@ -31,6 +33,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class SearchRoute extends AppCompatActivity {
 
@@ -89,9 +92,11 @@ public class SearchRoute extends AppCompatActivity {
                 throw new RuntimeException(e);
             }
         }
-//        GetBusScheduleAndBusRoutes getBusScheduleAndBusRoutes = new GetBusScheduleAndBusRoutes();
-//        getBusScheduleAndBusRoutes.getRoute(getResources().openRawResource(R.raw.bus_route),locations);
-//        getBusScheduleAndBusRoutes.getTime(getResources().openRawResource(R.raw.bus_schedule));
+        Collections.sort(locations);
+        GetBusScheduleAndBusRoutes getBusScheduleAndBusRoutes = new GetBusScheduleAndBusRoutes();
+        getBusScheduleAndBusRoutes.getRoute(getResources().openRawResource(R.raw.bus_route),locations);
+        getBusScheduleAndBusRoutes.getTime(getResources().openRawResource(R.raw.bus_schedule));
+        getBusScheduleAndBusRoutes.getReverseRoute(getResources().openRawResource(R.raw.reverse));
 
 
         //open a searchable spinner dialog

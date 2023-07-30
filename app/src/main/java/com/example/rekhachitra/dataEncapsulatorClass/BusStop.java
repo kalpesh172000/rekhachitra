@@ -1,4 +1,4 @@
-package com.example.rekhachitra;
+package com.example.rekhachitra.dataEncapsulatorClass;
 
 import java.io.Serializable;
 

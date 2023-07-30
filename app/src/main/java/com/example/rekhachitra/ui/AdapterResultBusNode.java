@@ -1,4 +1,4 @@
-package com.example.rekhachitra;
+package com.example.rekhachitra.ui;
 
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
@@ -8,6 +8,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.rekhachitra.R;
+import com.example.rekhachitra.dataEncapsulatorClass.ResultBusNode;
 
 import java.util.ArrayList;
 
