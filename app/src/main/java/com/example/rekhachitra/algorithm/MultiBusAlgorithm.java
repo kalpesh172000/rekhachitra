@@ -67,7 +67,7 @@ public class MultiBusAlgorithm
         this.destination=destination;
         this.veryStartHour=hour;
         this.veryStartMinute=minute;
-        PriorityQueue<ResultBusCard> resultBusCardArrayList = new PriorityQueue<>(5,new ResultBusCardComparator());
+        PriorityQueue<ResultBusCard> resultBusCardArrayList = new PriorityQueue<>(10,new ResultBusCardComparator());
         for(int i = 0 ; i < allPath.size();i++)
         {
             Log.d("kalpeshresultbuscardcheck","size a errror");
@@ -75,8 +75,12 @@ public class MultiBusAlgorithm
             resultBusCardArrayList = getResultBusCard(hour,minute,currentPath.path.get(0),currentPath.path.get(1),0,1,resultBusCardArrayList,new ArrayList<ResultBusNode>());
         }
         Log.d("kalpeshresultbuscardcheck","size1 errror");
-        return new ArrayList<>(resultBusCardArrayList);
-
+        ArrayList<ResultBusCard> resultBusCards = new ArrayList<>();
+        for(int k=0;k<5;k++)
+        {
+            resultBusCards.add(0,resultBusCardArrayList.poll());
+        }
+        return resultBusCards;
     }
 
     public PriorityQueue<ResultBusCard> getResultBusCard(byte cHour, byte cMinute,
@@ -154,7 +158,7 @@ public class MultiBusAlgorithm
                         continue;
                     if(eHour > cHour && (eMinute + (60 - cMinute)) < 3) // checks same condition in different form
                         continue;
-                    if(count < 5)
+                    if(count < 3)
                     {
                         Log.d("kalpeshresultbuscardcheck","size recursion errror " + time.hour + " : " + time.minute);
                         count++;
@@ -177,7 +181,9 @@ public class MultiBusAlgorithm
                                 totalMinute = (byte) (60 + totalMinute);
                                 totalHour--;
                             }
-                            getResultBusCardArrayList.add(new ResultBusCard(totalHour, totalMinute,resultBusNodeArrayList));
+                            getResultBusCardArrayList.add(new ResultBusCard(totalHour, totalMinute,new ArrayList<>(resultBusNodeArrayList)));
+                            if(getResultBusCardArrayList.size() > 10)
+                                getResultBusCardArrayList.poll();
                             if(getResultBusCardArrayList.size() == 0)
                                 Log.d("kalpeshresultbuscardcheck","size 3 errror");
                             else

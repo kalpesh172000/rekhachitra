@@ -153,7 +153,7 @@ public class MultipathGraph
         graph=createGraphFromCSV(graph,inputStream);
         PriorityQueue<PossiblePaths> result= findAllPaths(source,destination,graph);
         ArrayList<PossiblePaths> result1 = new ArrayList<>();
-        for(int i = 0;i < 5;i++)
+        for(int i = 0;i < 3;i++)
         {
             result1.add(result.poll());
             if(result.isEmpty())

@@ -15,12 +15,12 @@ public class ResultBusCardComparator implements Comparator<ResultBusCard>
         byte r2Hour = t1.totalHour;
         byte r2Minute = t1.totalMinute;
         if(r1Hour > r2Hour)
-            return 1;
+            return -1;
         else if (r1Hour < r2Hour)
-            return -1;
-        else if (r1Minute > r2Minute)
             return 1;
-        else
+        else if (r1Minute > r2Minute)
             return -1;
+        else
+            return 1;
     }
 }
